@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_ingot.mk
+    $(LOCAL_DIR)/lmodroid_ingot.mk
