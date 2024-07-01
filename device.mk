@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
@@ -16,7 +19,6 @@ PRODUCT_AAPT_PREF_CONFIG := 400dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 BOARD_SHIPPING_API_LEVEL := 31
-BOARD_API_LEVEL := 31
 PRODUCT_SHIPPING_API_LEVEL := 33
 
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -161,7 +163,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.7.vendor:64 \
     libcamera2ndk_vendor:64 \
+    libexif.vendor:64 \
     libgui_vendor:64 \
+    libyuv.vendor:64 \
     vendor.qti.hardware.camera.postproc@1.0.vendor:64 \
     vendor.qti.hardware.camera.aon@1.0.vendor:64
 
@@ -388,9 +392,13 @@ PRODUCT_PACKAGES += \
 
 # QMI
 PRODUCT_PACKAGES += \
+    libcurl.vendor:64 \
     libjson:64 \
+    libjsoncpp.vendor:64 \
+    libnetutils.vendor:64 \
     libqti_vndfwk_detect:64 \
     libqti_vndfwk_detect.vendor:64 \
+    libsqlite.vendor:64 \
     libvndfwk_detect_jni.qti:64 \
     libvndfwk_detect_jni.qti_vendor:64
 
@@ -495,6 +503,11 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
+
+# WiFi firmware symlinks
+PRODUCT_PACKAGES += \
+    firmware_wlanmdsp.otaupdate_symlink \
+    firmware_WCNSS_qcom_cfg.ini_symlink
 
 # WiFi Display
 PRODUCT_PACKAGES += \
